@@ -7,6 +7,7 @@ public class TrainCar : MonoBehaviour
     private PathCreation.PathCreator path;
 
     public float speed = 1.0f;
+    public float position = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,9 +20,9 @@ public class TrainCar : MonoBehaviour
     void Update()
     {
         float t = Time.timeSinceLevelLoad;
-        Vector3 point = path.path.GetPointAtDistance(t * speed);
+        Vector3 point = path.path.GetPointAtDistance(t * speed - position);
         transform.position = point;
-        Vector3 rotation = path.path.GetDirectionAtDistance(t * speed);
+        Vector3 rotation = path.path.GetDirectionAtDistance(t * speed - position);
         transform.rotation = Quaternion.LookRotation(rotation);
     }
 }
