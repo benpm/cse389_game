@@ -1,9 +1,9 @@
 # “Railroaded” (Working Title)
-Cheetah Boys
+v1.0.1
 
-Revision 1.0.0
+_Benjamin Mastripolito, Haydn Jones, Marcelo Dominguez_
 
-Benjamin Mastripolito, Haydn Jones, Marcelo Dominguez
+![](screenshot_1.png)
 
 # Overview
 ## Theme / Setting / Genre
