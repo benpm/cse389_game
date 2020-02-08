@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using PathCreation;
 
 public class TrainCar : MonoBehaviour
 {
-    private PathCreation.PathCreator path;
+    private PathCreator path;
 
     public float speed = 1.0f;
     public float position = 0.0f;
@@ -12,7 +13,7 @@ public class TrainCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        path = FindObjectOfType<PathCreation.PathCreator>();
+        path = FindObjectOfType<PathCreator>();
         Debug.Assert(path, "Train Path object not found");
     }
 
