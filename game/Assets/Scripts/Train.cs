@@ -24,6 +24,6 @@ public class Train : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        GameController.self.CameraFollow(cars[0].transform.position);
     }
 }
