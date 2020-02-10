@@ -15,6 +15,7 @@ public class PathGenerator : MonoBehaviour
         tilemap = GameObject.Find("FFG").GetComponent<Tilemap>();
         BoundsInt bounds = tilemap.cellBounds;
         Vector3Int pos = new Vector3Int(bounds.xMin, bounds.yMin, 0);
+        Vector3Int initpos = Vector3Int.zero;
 
         //Find the starting track tile position
         bool done = false;
@@ -25,6 +26,7 @@ public class PathGenerator : MonoBehaviour
                 if (tilemap.GetTile(pos))
                 {
                     done = true;
+                    initpos = pos;
                     break;
                 }
             }
@@ -68,7 +70,7 @@ public class PathGenerator : MonoBehaviour
             {
                 Vector3 tilepos = tilemap.GetCellCenterWorld(pos);
                 Vector3 midpoint = Vector3.Lerp(tilepos - lastdir, tilepos + dir, 0.5f);
-                midpoint = Vector3.Lerp(midpoint, tilepos, 0.5f);
+                midpoint = Vector3.Lerp(midpoint, tilepos, 0.9f);
                 path.bezierPath.AddSegmentToEnd(tilepos - lastdir);
                 path.bezierPath.AddSegmentToEnd(midpoint);
                 path.bezierPath.AddSegmentToEnd(tilepos + dir);
@@ -77,5 +79,10 @@ public class PathGenerator : MonoBehaviour
             lastdir = dir;
             pathlength += 1;
         }
+
+        //Remove initial segment
+        path.bezierPath.DeleteSegment(0);
+        path.bezierPath.DeleteSegment(1);
+        path.bezierPath.MovePoint(2, tilemap.GetCellCenterWorld(initpos));
     }
 }

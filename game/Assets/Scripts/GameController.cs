@@ -15,12 +15,10 @@ public class GameController : MonoBehaviour
         {
             self = this;
             DontDestroyOnLoad(gameObject);
-            Debug.Log("GameController not destroyed");
         }
         else
         {
             Destroy(gameObject);
-            Debug.Log("GameController destroyed");
         }
     }
 
