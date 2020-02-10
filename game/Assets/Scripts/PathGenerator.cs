@@ -16,8 +16,6 @@ public class PathGenerator : MonoBehaviour
         BoundsInt bounds = tilemap.cellBounds;
         Vector3Int pos = new Vector3Int(bounds.xMin, bounds.yMin, 0);
 
-        Debug.LogFormat("Bounds: {0}", bounds);
-
         //Find the starting track tile position
         bool done = false;
         for (; pos.x < bounds.xMax; pos.x += 1)
@@ -26,7 +24,6 @@ public class PathGenerator : MonoBehaviour
             {
                 if (tilemap.GetTile(pos))
                 {
-                    Debug.Log($"Found start track at {pos}");
                     done = true;
                     break;
                 }
@@ -43,7 +40,6 @@ public class PathGenerator : MonoBehaviour
         Vector3Int dir = Vector3Int.zero;
         Vector3Int lastdir = Vector3Int.zero;
         int pathlength = 0;
-
         while (pathlength < 1000)
         {
             TileBase north = tilemap.GetTile(pos + northdir);
@@ -51,6 +47,7 @@ public class PathGenerator : MonoBehaviour
             TileBase west = tilemap.GetTile(pos + westdir);
             TileBase east = tilemap.GetTile(pos + eastdir);
 
+            //Determine which direction to continue in
             if (east && eastdir != Vector3Int.zero - lastdir)
                 dir = eastdir;
             else if (south && southdir != Vector3Int.zero - lastdir)
@@ -61,27 +58,24 @@ public class PathGenerator : MonoBehaviour
                 dir = westdir;
             else
             {
+                //Path has ended
                 path.bezierPath.AddSegmentToEnd(tilemap.GetCellCenterWorld(pos));
                 break;
             }
-
-            Debug.Log($"Heading {dir}");
             
+            //If path continues, we should add path segments
             if (dir != lastdir)
             {
                 Vector3 tilepos = tilemap.GetCellCenterWorld(pos);
+                Vector3 midpoint = Vector3.Lerp(tilepos - lastdir, tilepos + dir, 0.5f);
+                midpoint = Vector3.Lerp(midpoint, tilepos, 0.5f);
                 path.bezierPath.AddSegmentToEnd(tilepos - lastdir);
+                path.bezierPath.AddSegmentToEnd(midpoint);
                 path.bezierPath.AddSegmentToEnd(tilepos + dir);
             }
             pos += dir;
             lastdir = dir;
             pathlength += 1;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
