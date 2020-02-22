@@ -23,7 +23,9 @@ public class TrainCar : MonoBehaviour
         float t = Time.timeSinceLevelLoad;
         Vector3 point = path.path.GetPointAtDistance(t * speed - position);
         transform.position = point;
-        Vector3 rotation = path.path.GetDirectionAtDistance(t * speed - position);
-        transform.rotation = Quaternion.LookRotation(rotation);
+        Vector3 rot = path.path.GetRotationAtDistance(t * speed - position).eulerAngles;
+        rot.z = -rot.x;
+        rot.x = rot.y = 0;
+        transform.rotation = Quaternion.Euler(rot);
     }
 }
