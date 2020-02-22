@@ -17,7 +17,7 @@ public class Train : MonoBehaviour
         {
             car.position = position;
             car.speed = speed;
-            position += car.transform.localScale.x + 1.0f;
+            position += 2.5f;
         }
     }
 
