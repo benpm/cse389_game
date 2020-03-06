@@ -117,16 +117,27 @@ public class Path : MonoBehaviour
         Vector3 p1 = controlPoints[i + 1];
         Vector3 newDir = controlDirs[i];
 
-
+        float angle;
         if ((p0.x != p1.x) && (p0.y != p1.y))
         {
             float distancePastP0 = distance - controlDists[i];
             Vector3 oldDir = controlDirs[i - 1];
             Vector3 vec = Vector3.RotateTowards(-newDir, oldDir, distancePastP0 / turnRadius, 0) * turnRadius;
-            return Vector3.SignedAngle(Vector3.down, vec, Vector3.forward);
+            angle = Vector3.SignedAngle(Vector3.down, vec, Vector3.forward);
+            if (Vector3.SignedAngle(oldDir, newDir, Vector3.forward) < 0)
+            {
+                angle = 180 + angle;
+            }
+
+            return angle;
         }
 
-        return Vector3.Angle(Vector3.right, newDir);
+        angle = Vector3.Angle(Vector3.right, newDir);
+        if (Vector3.SignedAngle(Vector3.right, newDir, Vector3.forward) < 0)
+        {
+            angle = 180 + angle;
+        }
+        return angle;
     }
 
     private int controlIndexAfter(float distance)
