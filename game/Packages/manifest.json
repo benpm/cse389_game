@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.unity.2d.pixel-perfect": "2.0.4",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.2d.tilemap.extras": "https://github.com/Unity-Technologies/2d-extras.git#master",
@@ -47,7 +46,7 @@
   "lock": {
     "com.unity.2d.tilemap.extras": {
       "revision": "master",
-      "hash": "a95c07ac963132f767842418cb3b7c260d9c8cad"
+      "hash": "ea401cd05132f72a4e768fcc18288bc3671e1fd0"
     }
   }
 }

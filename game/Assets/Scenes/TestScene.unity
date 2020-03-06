@@ -1550,7 +1550,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 777962461}
-  - component: {fileID: 777962460}
   - component: {fileID: 777962462}
   m_Layer: 0
   m_Name: TrainPath
@@ -1559,59 +1558,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &777962460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 777962459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e5ac92bc18f545cc84cd886ece82b4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  editorData:
-    _bezierPath:
-      points:
-      - {x: -14.442048, y: 11.539571, z: 0}
-      - {x: -14.212355, y: 11.537444, z: 0}
-      - {x: -13.752966, y: 11.533191, z: 0}
-      - {x: -13.5232725, y: 11.531064, z: 0}
-      isClosed: 0
-      space: 1
-      controlMode: 3
-      autoControlLength: 0.15
-      boundsUpToDate: 0
-      bounds:
-        m_Center: {x: -14, y: 12, z: -1}
-        m_Extent: {x: 2, y: 0.14433813, z: 0.000000029802322}
-      perAnchorNormalsAngle:
-      - 0
-      - 0
-      globalNormalsAngle: 0
-      flipNormals: 0
-    vertexPathUpToDate: 1
-    vertexPathMaxAngleError: 0.3
-    vertexPathMinVertexSpacing: 0.01
-    showTransformTool: 1
-    showPathBounds: 1
-    showPerSegmentBounds: 1
-    displayAnchorPoints: 1
-    displayControlPoints: 1
-    bezierHandleScale: 1
-    globalDisplaySettingsFoldout: 0
-    keepConstantHandleSize: 1
-    showNormalsInVertexMode: 0
-    showBezierPathInVertexMode: 0
-    showDisplayOptions: 1
-    showPathOptions: 1
-    showVertexPathDisplayOptions: 0
-    showVertexPathOptions: 1
-    showNormals: 1
-    showNormalsHelpInfo: 0
-    tabIndex: 0
-  initialized: 1
 --- !u!4 &777962461
 Transform:
   m_ObjectHideFlags: 0
