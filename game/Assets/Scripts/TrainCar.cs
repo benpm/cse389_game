@@ -18,11 +18,12 @@ public class TrainCar : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         float t = Time.timeSinceLevelLoad;
         
         Vector3 point = path.distanceToPosition(t * speed - position);
+        point.z = transform.position.z;
         transform.position = point;
         
         float rot = path.distanceToAngle(t * speed - position);

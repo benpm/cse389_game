@@ -41,7 +41,7 @@ public class GameController : MonoBehaviour
     {
         cam.transform.position = new Vector3(
             pos.x,
-            pos.y + cam.transform.position.z / 2,
+            pos.y + cam.transform.position.z,
             cam.transform.position.z
             );
     }

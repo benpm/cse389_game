@@ -3,8 +3,14 @@ guid: cd25a95ac1babe448a76b29714402b31
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8020143640844766479
+      213: 7257708435260861865
     second: palm_tree
+  - first:
+      213: 3158813897272577515
+    second: turret
+  - first:
+      213: -1259408508766424310
+    second: bullet
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -34,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -48,9 +54,9 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -92,19 +98,61 @@ TextureImporter:
       name: palm_tree
       rect:
         serializedVersion: 2
-        x: 22
-        y: 30
-        width: 79
-        height: 74
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1
+        y: 1
+        width: 81
+        height: 76
+      alignment: 9
+      pivot: {x: 0.5467912, y: 0.024576778}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0d092816264d4f60800000000000000
-      internalID: 8020143640844766479
+      spriteID: 9ad641f6e5f88b460800000000000000
+      internalID: 7257708435260861865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turret
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 11
+        width: 34
+        height: 66
+      alignment: 9
+      pivot: {x: 0.4969249, y: 0.2560649}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bedcf72e08c56db20800000000000000
+      internalID: 3158813897272577515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 65
+        width: 4
+        height: 12
+      alignment: 9
+      pivot: {x: 0.4999962, y: 0.8397662}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a037fd742aea58ee0800000000000000
+      internalID: -1259408508766424310
       vertices: []
       indices: 
       edges: []
