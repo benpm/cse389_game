@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public static GameController self;
 
     private Camera cam;
+    public BulletSystem bulletSystem;
 
     //Enforce singleton behavior
     void Awake()
@@ -25,8 +26,10 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bulletSystem = transform.Find("BulletSystem").GetComponent<BulletSystem>();
         cam = transform.Find("Main Camera").GetComponent<Camera>();
         Debug.Assert(cam, "Cannot find Main Camera");
+        Debug.Assert(bulletSystem, "Cannot find BulletSystem");
     }
 
     // Update is called once per frame
@@ -41,7 +44,7 @@ public class GameController : MonoBehaviour
     {
         cam.transform.position = new Vector3(
             pos.x,
-            pos.y + cam.transform.position.z,
+            pos.y + (cam.transform.position.z * (cam.transform.rotation.eulerAngles.x / -45)),
             cam.transform.position.z
             );
     }
