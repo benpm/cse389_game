@@ -40188,15 +40188,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1277367246, guid: 333490d438013ef44b44aa2baaf802af, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.30070576
       objectReference: {fileID: 0}
     - target: {fileID: 1277367246, guid: 333490d438013ef44b44aa2baaf802af, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.953717
       objectReference: {fileID: 0}
     - target: {fileID: 1277367246, guid: 333490d438013ef44b44aa2baaf802af, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 2303222373775724035, guid: 333490d438013ef44b44aa2baaf802af,
         type: 3}

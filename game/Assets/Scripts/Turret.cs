@@ -31,12 +31,16 @@ public class Turret : MonoBehaviour
         if (mouseControlled)
         {
             Vector3 mPos = Input.mousePosition;
-            mPos.z = 10;
+            mPos.z = Camera.main.nearClipPlane;
             mPos = Camera.main.ScreenToWorldPoint(mPos);
+            mPos = Camera.main.ScreenToWorldPoint(new Vector3(
+                Input.mousePosition.x, 
+                Input.mousePosition.y, 
+                (mPos.z + 6.23f) / Mathf.Sin(Mathf.Deg2Rad * Camera.main.transform.rotation.eulerAngles.x)));
             Vector3 pos = transform.position;
             Vector3 angle = new Vector3(0, 0, Mathf.Atan2(mPos.y - pos.y, mPos.x - pos.x) * Mathf.Rad2Deg - 90.0f);
             transform.rotation = Quaternion.Euler(angle);
-            //Debug.DrawLine(pos, mPos, Color.red, 1.0f/60.0f, false);
+            Debug.DrawLine(pos, mPos, Color.red, 1.0f/60.0f, false);
         }
 
         // Fire when ready
