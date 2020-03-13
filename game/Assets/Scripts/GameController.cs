@@ -35,8 +35,6 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Follow the train
-
     }
 
     //Make camera follow
@@ -44,7 +42,8 @@ public class GameController : MonoBehaviour
     {
         cam.transform.position = new Vector3(
             pos.x,
-            pos.y + (cam.transform.position.z * 0.5f),
+            // Adjust y position to account for depth
+            pos.y + (cam.transform.position.z * ((cam.transform.rotation.eulerAngles.x - 360.0f) / -45.0f)),
             cam.transform.position.z
             );
     }
