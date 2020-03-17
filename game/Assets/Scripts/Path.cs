@@ -74,8 +74,14 @@ public class Path : MonoBehaviour
                 controlDirs.Add(dir);
                 controlDirs.Add(dir);
             }
+            else if (dir == Vector3Int.up || dir == Vector3Int.down)
+            {
+                pathlength += PerspectiveScale.yscaleAmnt();
+            }
             else
+            {
                 pathlength += 1;
+            }
             
             pos += dir;
             lastdir = dir;

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PerspectiveScale : MonoBehaviour
 {
     // Returns the amount by which to scale in y direction
-    static float yscaleAmnt()
+    public static float yscaleAmnt()
     {
         return 1.0f / Mathf.Cos(Mathf.Deg2Rad * (360.0f - Camera.main.transform.rotation.eulerAngles.x));
     }
