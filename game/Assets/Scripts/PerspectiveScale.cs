@@ -15,7 +15,7 @@ public class PerspectiveScale : MonoBehaviour
     {
         float yscale = yscaleAmnt();
         Vector3 scale = transform.localScale;
-        scale.y = yscale;
+        scale.y = yscale * (scale.x + scale.z) * 0.5f;
         transform.localScale = scale;
     }
 

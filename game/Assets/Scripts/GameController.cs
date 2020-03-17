@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
 
     private Camera cam;
     public BulletSystem bulletSystem;
+    public Train train;
 
     //Enforce singleton behavior
     void Awake()
@@ -28,6 +29,7 @@ public class GameController : MonoBehaviour
     {
         bulletSystem = transform.Find("BulletSystem").GetComponent<BulletSystem>();
         cam = transform.Find("Main Camera").GetComponent<Camera>();
+        train = FindObjectOfType<Train>();
         Debug.Assert(cam, "Cannot find Main Camera");
         Debug.Assert(bulletSystem, "Cannot find BulletSystem");
     }
