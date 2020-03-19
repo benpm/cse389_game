@@ -23,6 +23,7 @@ public class PerspectiveScale : MonoBehaviour
     void Awake()
     {
         adjust();
+        transform.position = Vector3.Scale(transform.position, new Vector3(1.0f, yscaleAmnt(), 1.0f));
     }
 
     // Update is called once per frame
