@@ -7,7 +7,8 @@ public class GameController : MonoBehaviour
     public static GameController self;
 
     private Camera cam;
-    public BulletSystem bulletSystem;
+    public BulletSystem playerBulletSystem;
+    public BulletSystem enemyBulletSystem;
     public Train train;
 
     //Enforce singleton behavior
@@ -27,11 +28,13 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletSystem = transform.Find("BulletSystem").GetComponent<BulletSystem>();
+        playerBulletSystem = transform.Find("PlayerBulletSystem").GetComponent<BulletSystem>();
+        enemyBulletSystem = transform.Find("EnemyBulletSystem").GetComponent<BulletSystem>();
         cam = transform.Find("Main Camera").GetComponent<Camera>();
         train = FindObjectOfType<Train>();
         Debug.Assert(cam, "Cannot find Main Camera");
-        Debug.Assert(bulletSystem, "Cannot find BulletSystem");
+        Debug.Assert(playerBulletSystem, "Cannot find PlayerBulletSystem");
+        Debug.Assert(enemyBulletSystem, "Cannot find EnemyBulletSystem");
     }
 
     // Update is called once per frame

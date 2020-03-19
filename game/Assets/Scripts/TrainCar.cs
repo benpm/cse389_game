@@ -8,6 +8,8 @@ public class TrainCar : MonoBehaviour
 
     public float speed = 1.0f;
     public float position = 0.0f;
+    public int hp = 1000;
+    public bool abandoned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -19,14 +21,27 @@ public class TrainCar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float t = Time.timeSinceLevelLoad;
-        
-        Vector3 point = path.distanceToPosition(t * speed - position);
-        point.z = transform.position.z;
-        transform.position = point;
-        
-        float rot = path.distanceToAngle(t * speed - position);
+        if (!abandoned)
+        {
+            float t = Time.timeSinceLevelLoad;
 
-        transform.rotation = Quaternion.Euler(0, 0, rot);
+            Vector3 point = path.distanceToPosition(t * speed - position);
+            point.z = transform.position.z;
+            transform.position = point;
+
+            float rot = path.distanceToAngle(t * speed - position);
+
+            transform.rotation = Quaternion.Euler(0, 0, rot);
+        }
+    }
+
+    void OnParticleCollision(GameObject other)
+    {
+        hp -= 100;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            SendMessageUpwards("trainCarDestroyed", this);
+        }
     }
 }

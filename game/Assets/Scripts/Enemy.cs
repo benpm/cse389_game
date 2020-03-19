@@ -6,53 +6,51 @@ public class Enemy : MonoBehaviour
 {
     enum State
     {
-        Running, Attacking, Recovering, Dying
+        Running, Attacking
     }
-
-    public int hp = 100;
+    
+    public int attackFreq = 30;
 
     private State state;
     private Rigidbody2D body;
     private int recoverTimer;
+    private int attackTimer;
+    private Attackable attackable;
 
     // Start is called before the first frame update
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        attackable = GetComponent<Attackable>();
+        attackTimer = attackFreq;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (hp <= 0 && state != State.Dying)
+        if (attackable.state == Attackable.State.Alive)
         {
-            state = State.Dying;
-            Destroy(gameObject, 1.0f);
-        }
-        TrainCar car = GameController.self.train.getClosestCar(transform.position);
-        float dist = GameController.self.train.distance(transform.position);
-        switch (state)
-        {
-            case State.Running:
-                transform.position = Vector3.MoveTowards(transform.position, car.transform.position, 0.1f);
-                if (dist < 2)
-                    state = State.Attacking;
-                break;
-            case State.Attacking:
-                if (dist > 4)
-                    state = State.Running;
-                break;
-            case State.Recovering:
-                recoverTimer -= 1;
-                if (recoverTimer <= 0)
-                {
-                    state = State.Running;
-                }
-                break;
-            case State.Dying:
-                transform.localScale *= 0.8f;
-                body.velocity = Vector2.zero;
-                break;
+            TrainCar car = GameController.self.train.getClosestCar(transform.position);
+            float dist = GameController.self.train.distance(transform.position);
+            switch (state)
+            {
+                case State.Running:
+                    transform.position = Vector3.MoveTowards(transform.position, car.transform.position, 0.1f);
+                    if (dist < 3)
+                        state = State.Attacking;
+                    break;
+                case State.Attacking:
+                    if (dist > 4)
+                        state = State.Running;
+                    attackTimer -= 1;
+                    if (attackTimer <= 0)
+                    {
+                        attackTimer = attackFreq;
+                        Vector3 dir = -Vector3.Normalize(transform.position - car.transform.position) * 10.0f;
+                        GameController.self.enemyBulletSystem.emit(transform.position, dir);
+                    }
+                    break;
+            }
         }
 
         // Rigidbody easing
@@ -61,14 +59,9 @@ public class Enemy : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 0.01f));
     }
 
-    // Collision with bullet
-    void OnParticleCollision(GameObject other)
+    // Recovered from attack
+    void recovered()
     {
-        if (state != State.Dying)
-        {
-            state = State.Recovering;
-            recoverTimer = 60;
-            hp -= 10;
-        }
+        state = State.Running;
     }
 }

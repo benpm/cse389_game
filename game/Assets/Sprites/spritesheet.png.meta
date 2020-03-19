@@ -14,6 +14,27 @@ TextureImporter:
   - first:
       213: 8020143640844766479
     second: banana
+  - first:
+      213: -7740885511988095314
+    second: wreckage
+  - first:
+      213: 8020143640844766479
+    second: palm_tree
+  - first:
+      213: -6251682230944352461
+    second: banana
+  - first:
+      213: -1259408508766424310
+    second: spawner
+  - first:
+      213: -5962389079421231736
+    second: bullet
+  - first:
+      213: 2788568348960109317
+    second: turret
+  - first:
+      213: 226702753830753226
+    second: wreckage
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -98,57 +119,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: palm_tree
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 64
-        width: 81
-        height: 76
-      alignment: 9
-      pivot: {x: 0.5467912, y: 0.024576778}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9ad641f6e5f88b460800000000000000
-      internalID: 7257708435260861865
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: turret
-      rect:
-        serializedVersion: 2
-        x: 84
-        y: 1
-        width: 34
-        height: 66
-      alignment: 9
-      pivot: {x: 0.4969249, y: 0.2560649}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bedcf72e08c56db20800000000000000
-      internalID: 3158813897272577515
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: bullet
+      name: spawner
       rect:
         serializedVersion: 2
         x: 159
-        y: 128
-        width: 4
-        height: 12
-      alignment: 9
-      pivot: {x: 0.4999962, y: 0.8397662}
+        y: 74
+        width: 66
+        height: 66
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,6 +135,27 @@ TextureImporter:
       bones: []
       spriteID: a037fd742aea58ee0800000000000000
       internalID: -1259408508766424310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: palm_tree
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 64
+        width: 81
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0d092816264d4f60800000000000000
+      internalID: 8020143640844766479
       vertices: []
       indices: 
       edges: []
@@ -169,14 +169,77 @@ TextureImporter:
         width: 73
         height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0d092816264d4f60800000000000000
-      internalID: 8020143640844766479
+      spriteID: 337b0ff32209d39a0800000000000000
+      internalID: -6251682230944352461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bullet
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 128
+        width: 4
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88ddd6ce8b6514da0800000000000000
+      internalID: -5962389079421231736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turret
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 1
+        width: 34
+        height: 66
+      alignment: 9
+      pivot: {x: 0.4944283, y: 0.2560244}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5033aaf832cf2b620800000000000000
+      internalID: 2788568348960109317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wreckage
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 34
+        width: 85
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac35fa714f8652300800000000000000
+      internalID: 226702753830753226
       vertices: []
       indices: 
       edges: []
