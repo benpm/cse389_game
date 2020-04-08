@@ -7,14 +7,23 @@ public class Turret : MonoBehaviour
     private Transform tip;
     private bool canFire = false;
 
+    public enum Control
+    {
+        TargetTrain, TargetEnemy, Mouse
+    }
+
+    public Control control;
     public int firingRate = 10;
-    public bool mouseControlled;
+    public BulletSystem bulletSystem;
+    public float rotateSpeed = 1.0f;
+    public float targetingRadius = 6.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         tip = transform.Find("Tip");
         Debug.Assert(tip, "Tip not found");
+        Debug.Assert(bulletSystem);
     }
 
     // Update is called once per frame
@@ -28,29 +37,57 @@ public class Turret : MonoBehaviour
         }
 
         // Set rotation towards mouse position if mouse controlled
-        if (mouseControlled)
+        Vector3 target = Vector3.zero;
+        switch (control)
         {
-            // Get mouse point on camera plane
-            Vector3 wPos = Camera.main.ScreenToWorldPoint(new Vector3(
-                Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
-            // Get mouse point on world plane
-            Vector3 mPos = Camera.main.ScreenToWorldPoint(new Vector3(
-                Input.mousePosition.x, 
-                Input.mousePosition.y, 
-                (-wPos.z) / Mathf.Cos(Mathf.Deg2Rad * -Camera.main.transform.rotation.eulerAngles.x) + transform.position.z));
-            // Get angle between turret and world plane point
-            Vector3 angle = new Vector3(0, 0, Mathf.Atan2(
-                mPos.y - 0.2f - transform.position.y, 
-                mPos.x - transform.position.x) * Mathf.Rad2Deg - 90.0f);
-            transform.rotation = Quaternion.Euler(angle);
+            case Control.Mouse:
+                // Get mouse point on camera plane
+                Vector3 wPos = Camera.main.ScreenToWorldPoint(new Vector3(
+                    Input.mousePosition.x, Input.mousePosition.y, Camera.main.nearClipPlane));
+                // Get mouse point on world plane
+                target = Camera.main.ScreenToWorldPoint(new Vector3(
+                    Input.mousePosition.x,
+                    Input.mousePosition.y,
+                    (-wPos.z) / Mathf.Cos(Mathf.Deg2Rad
+                        * -Camera.main.transform.rotation.eulerAngles.x)
+                        + transform.position.z));
+                break;
+            case Control.TargetEnemy:
+                LayerMask mask = LayerMask.GetMask("Hittable");
+                RaycastHit2D hit = Physics2D.CircleCast(transform.position, targetingRadius, Vector2.zero, 0.0f, mask);
+                if (hit)
+                {
+                    target = hit.point;
+                }
+                else
+                {
+                    canFire = false;
+                    target = transform.position + new Vector3(0,1,0);
+                }
+                break;
+            case Control.TargetTrain:
+                TrainCar nearestCar = GameController.self.train.getClosestCar(transform.position);
+                target = nearestCar.transform.position;
+                break;
         }
 
+        // Get angle between turret and world plane point
+        float rotationAngle = Mathf.LerpAngle(
+            transform.rotation.eulerAngles.z,
+            Mathf.Atan2(
+                target.y - 0.2f - transform.position.y,
+                target.x - transform.position.x) * Mathf.Rad2Deg - 90.0f,
+            rotateSpeed
+            );
+        Vector3 rotation = new Vector3(0, 0, rotationAngle);
+        transform.rotation = Quaternion.Euler(rotation);
+
         // Fire when ready
-        if (canFire && (!mouseControlled || Input.GetButton("Fire")))
+        if (canFire && (control != Control.Mouse || Input.GetButton("Fire")))
         {
             float angle = Mathf.Deg2Rad * (transform.rotation.eulerAngles.z + 90.0f);
             Vector3 dir = new Vector3(Mathf.Rad2Deg * Mathf.Cos(angle), Mathf.Rad2Deg * Mathf.Sin(angle), 0);
-            GameController.self.playerBulletSystem.emit(tip.position, dir);
+            bulletSystem.emit(tip.position, dir);
             canFire = false;
         }
     }
