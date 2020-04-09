@@ -134,3 +134,7 @@ March - solidify mechanics, add levels, enemies, general content creation
 April - complete core game, add additional content as needed, polish, testing
 
 May - more polish, testing, then completion
+
+# Assets Used
+
+- [Desert Tileset](https://opengameart.org/content/desert-tileset-0) CC BY 3.0

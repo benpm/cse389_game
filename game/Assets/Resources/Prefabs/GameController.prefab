@@ -9756,6 +9756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88b945a24e1012c488a5c754168adc0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBulletSystem: {fileID: 0}
-  enemyBulletSystem: {fileID: 0}
+  playerBulletSystem: {fileID: 635942526}
+  enemyBulletSystem: {fileID: 419939497}
   train: {fileID: 0}
