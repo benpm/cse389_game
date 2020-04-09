@@ -5,6 +5,7 @@ using UnityEngine.Tilemaps;
 
 public class Path : MonoBehaviour
 {
+    public Tilemap tilemap;
     List<Vector3> controlPoints = new List<Vector3>();
     List<Vector3> controlDirs = new List<Vector3>();
     List<float> controlDists = new List<float>();
@@ -15,7 +16,8 @@ public class Path : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Tilemap tilemap = GameObject.Find("FFG").GetComponent<Tilemap>();
+        Debug.Assert(tilemap);
+
         BoundsInt bounds = tilemap.cellBounds;
         Vector3Int pos = Vector3Int.zero;
 
