@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = 60;
         playerBulletSystem = transform.Find("PlayerBulletSystem").GetComponent<BulletSystem>();
         enemyBulletSystem = transform.Find("EnemyBulletSystem").GetComponent<BulletSystem>();
         cam = transform.Find("Main Camera").GetComponent<Camera>();
