@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     }
     
     public int attackFreq = 30;
+    public float followRadius = 24;
 
     private State state;
     private Rigidbody2D body;
@@ -35,9 +36,12 @@ public class Enemy : MonoBehaviour
             switch (state)
             {
                 case State.Running:
-                    transform.position = Vector3.MoveTowards(transform.position, car.transform.position, 0.1f);
-                    if (dist < 3)
-                        state = State.Attacking;
+                    if (Vector2.Distance(transform.position, car.transform.position) < followRadius)
+                    {
+                        transform.position = Vector3.MoveTowards(transform.position, car.transform.position, 0.1f);
+                        if (dist < 3)
+                            state = State.Attacking;
+                    }
                     break;
                 case State.Attacking:
                     if (dist > 4)

@@ -7,6 +7,7 @@ public class Train : MonoBehaviour
     List<TrainCar> cars;
 
     public float speed = 1.0f;
+    public TrainCar engineCar { get { return cars[0]; } }
 
     // Re-create train car list
     void createCarList()
@@ -73,5 +74,17 @@ public class Train : MonoBehaviour
         cars.Remove(car);
         GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Wreckage"), car.transform.position, Quaternion.identity);
         obj.transform.position = car.transform.position;
+    }
+
+    // Remove abandoned train cars
+    public void deleteAbandoned()
+    {
+        foreach (TrainCar car in GetComponentsInChildren<TrainCar>())
+        {
+            if (car.abandoned)
+            {
+                Destroy(car.gameObject);
+            }
+        }
     }
 }

@@ -5,7 +5,8 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public List<Sprite> sprites;
-    public int spawnRate = 120;
+    public int spawnPeriod = 120;
+    public float activationRadius = 24;
 
     private GameObject enemyPrefab;
     private int spawnTimer;
@@ -14,7 +15,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         enemyPrefab = Resources.Load<GameObject>("Prefabs/Enemy");
-        spawnTimer = spawnRate;
+        spawnTimer = spawnPeriod;
         Debug.Assert(sprites.Count > 0);
     }
 
@@ -22,9 +23,13 @@ public class Spawner : MonoBehaviour
     void Update()
     {
         spawnTimer -= 1;
-        if (spawnTimer <= 0)
+        if (spawnTimer <= 0 
+            && Vector2.Distance(
+                transform.position,
+                GameController.self.train.engineCar.transform.position
+                ) < activationRadius)
         {
-            spawnTimer = spawnRate;
+            spawnTimer = spawnPeriod;
             GameObject newEnemy = Instantiate(enemyPrefab);
             newEnemy.transform.position = transform.position;
             newEnemy.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Count)];
@@ -34,6 +39,6 @@ public class Spawner : MonoBehaviour
     // Recovered from attack
     void recovered()
     {
-        spawnTimer = spawnRate;
+        spawnTimer = spawnPeriod;
     }
 }

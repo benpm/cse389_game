@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class Path : MonoBehaviour
 {
     public Tilemap tilemap;
+    public float length { get; private set; }
     List<Vector3> controlPoints = new List<Vector3>();
     List<Vector3> controlDirs = new List<Vector3>();
     List<float> controlDists = new List<float>();
@@ -56,6 +57,11 @@ public class Path : MonoBehaviour
                 }
             }
 
+            if (!tilemap.GetTile(pos + dir))
+            {
+                break;
+            }
+
             if (pathlength == 0)
             {
                 lastdir = dir;
@@ -92,6 +98,7 @@ public class Path : MonoBehaviour
         controlPoints.Add(tilemap.GetCellCenterWorld(pos));
         controlDirs.Add(lastdir);
         controlDists.Add(pathlength);
+        length = pathlength;
     }
 
     public Vector3 distanceToPosition(float distance)

@@ -13,14 +13,19 @@ public class Turret : MonoBehaviour
     }
 
     public Control control;
-    public int firingRate = 10;
-    public BulletSystem bulletSystem;
+    public int firingPeriod = 10;
     public float rotateSpeed = 1.0f;
     public float targetingRadius = 6.0f;
+
+    private BulletSystem bulletSystem;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (control == Control.TargetTrain)
+            bulletSystem = GameController.self.enemyBulletSystem;
+        else
+            bulletSystem = GameController.self.playerBulletSystem;
         tip = transform.Find("Tip");
         Debug.Assert(tip, "Tip not found");
         Debug.Assert(bulletSystem);
@@ -31,7 +36,7 @@ public class Turret : MonoBehaviour
     {
         // Determine if we can fire again
         int t = Time.frameCount;
-        if (t % firingRate == 0)
+        if (t % firingPeriod == 0)
         {
             canFire = true;
         }
@@ -62,12 +67,17 @@ public class Turret : MonoBehaviour
                 else
                 {
                     canFire = false;
-                    target = transform.position + new Vector3(0,1,0);
+                    target = transform.position + Vector3.up;
                 }
                 break;
             case Control.TargetTrain:
                 TrainCar nearestCar = GameController.self.train.getClosestCar(transform.position);
                 target = nearestCar.transform.position;
+                if (Vector2.Distance(transform.position, target) > targetingRadius)
+                {
+                    canFire = false;
+                    target = transform.position + Vector3.up;
+                }
                 break;
         }
 

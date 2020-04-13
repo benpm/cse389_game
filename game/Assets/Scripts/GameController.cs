@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class GameController : MonoBehaviour
     public BulletSystem playerBulletSystem;
     public BulletSystem enemyBulletSystem;
     public Train train;
+    public LevelProperties levelProperties;
 
     //Enforce singleton behavior
     void Awake()
@@ -33,24 +35,41 @@ public class GameController : MonoBehaviour
         enemyBulletSystem = transform.Find("EnemyBulletSystem").GetComponent<BulletSystem>();
         cam = transform.Find("Main Camera").GetComponent<Camera>();
         train = FindObjectOfType<Train>();
+        levelProperties = FindObjectOfType<LevelProperties>();
+        // Make sure we found everything we need
         Debug.Assert(cam, "Cannot find Main Camera");
         Debug.Assert(playerBulletSystem, "Cannot find PlayerBulletSystem");
         Debug.Assert(enemyBulletSystem, "Cannot find EnemyBulletSystem");
+        Debug.Assert(levelProperties, "Cannot find LevelProperties");
     }
 
     // Update is called once per frame
     void Update()
     {
+        
     }
 
-    //Make camera follow
+    // Reached end of level
+    public void EndLevel()
+    {
+        Debug.Log("Ended level, going to next level");
+        // Clean up abandoned train cars
+        train.deleteAbandoned();
+        // Load new level
+        SceneManager.LoadScene(levelProperties.nextLevel.scenePath);
+    }
+
+    // Make camera follow
     public void CameraFollow(Vector3 pos)
     {
-        cam.transform.position = new Vector3(
+        Vector3 camPos = new Vector3(
             pos.x,
             // Adjust y position to account for depth
             pos.y + (cam.transform.position.z * ((cam.transform.rotation.eulerAngles.x - 360.0f) / -45.0f)),
             cam.transform.position.z
-            );
+        );
+        camPos.x = Mathf.Clamp(camPos.x, levelProperties.viewBox.xMin, levelProperties.viewBox.xMax);
+        camPos.y = Mathf.Clamp(camPos.y, levelProperties.viewBox.yMin, levelProperties.viewBox.yMax);
+        cam.transform.position = camPos;
     }
 }

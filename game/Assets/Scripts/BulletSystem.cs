@@ -12,11 +12,11 @@ public class BulletSystem : MonoBehaviour
         particles = GetComponent<ParticleSystem>();
     }
 
-    public void emit(Vector3 pos, Vector3 dir)
+    public void emit(Vector3 pos, Vector3 dir, float velocity = 30.0f)
     {
         ParticleSystem.EmitParams param = new ParticleSystem.EmitParams();
         param.position = pos;
-        param.velocity = dir;
+        param.velocity = dir.normalized * velocity;
         particles.Emit(param, 1);
     }
 }
