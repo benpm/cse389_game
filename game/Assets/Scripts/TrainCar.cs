@@ -12,6 +12,7 @@ public class TrainCar : MonoBehaviour
     public int hp = 1000;
     public bool abandoned = false;
     public float distAlongTrack { get; private set; }
+    public int maxhp { get; private set; }
 
     // Add delegates for scene loading
     private void OnEnable()
@@ -32,6 +33,7 @@ public class TrainCar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        maxhp = hp;
         Init();
     }
 
@@ -64,9 +66,10 @@ public class TrainCar : MonoBehaviour
         }
     }
 
+    // Enemy bullet hit
     void OnParticleCollision(GameObject other)
     {
-        hp -= 100;
+        hp -= 25;
         if (hp <= 0)
         {
             Destroy(gameObject);

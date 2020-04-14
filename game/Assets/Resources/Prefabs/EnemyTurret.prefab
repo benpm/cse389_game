@@ -127,8 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: 0
-  firingRate: 10
-  bulletSystem: {fileID: 0}
+  firingPeriod: 10
   rotateSpeed: 1
   targetingRadius: 24
 --- !u!1 &1247849152899466043
@@ -142,9 +141,9 @@ GameObject:
   - component: {fileID: 1247849152899465984}
   - component: {fileID: 1247849152899465985}
   - component: {fileID: 1247849152899465991}
-  - component: {fileID: 999874054795060708}
   - component: {fileID: 1247849152899465989}
   - component: {fileID: 1247849152899466042}
+  - component: {fileID: 8865886724743117536}
   m_Layer: 8
   m_Name: EnemyTurret
   m_TagString: Untagged
@@ -230,22 +229,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358aed3825cbc0d4e8c87bd9d597c959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &999874054795060708
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1247849152899466043}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.03125
 --- !u!114 &1247849152899465989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +264,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &8865886724743117536
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247849152899466043}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.0625, y: 2.0625}
+  m_Direction: 0

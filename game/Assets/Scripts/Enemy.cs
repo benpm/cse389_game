@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     
     public int attackFreq = 30;
     public float followRadius = 24;
+    public int attackDamage = 20;
 
     private State state;
     private Rigidbody2D body;

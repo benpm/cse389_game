@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public BulletSystem enemyBulletSystem;
     public Train train;
     public LevelProperties levelProperties;
+    public UI_Controller ui;
 
     //Enforce singleton behavior
     void Awake()
@@ -36,11 +37,13 @@ public class GameController : MonoBehaviour
         cam = transform.Find("Main Camera").GetComponent<Camera>();
         train = FindObjectOfType<Train>();
         levelProperties = FindObjectOfType<LevelProperties>();
+        ui = GetComponentInChildren<UI_Controller>();
         // Make sure we found everything we need
         Debug.Assert(cam, "Cannot find Main Camera");
         Debug.Assert(playerBulletSystem, "Cannot find PlayerBulletSystem");
         Debug.Assert(enemyBulletSystem, "Cannot find EnemyBulletSystem");
         Debug.Assert(levelProperties, "Cannot find LevelProperties");
+        Debug.Assert(ui, "Cannot find UI_Controller");
     }
 
     // Update is called once per frame

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
-    List<TrainCar> cars;
+    public List<TrainCar> cars { get; private set; }
 
     public float speed = 1.0f;
     public TrainCar engineCar { get { return cars[0]; } }
@@ -26,6 +26,7 @@ public class Train : MonoBehaviour
     void Start()
     {
         createCarList();
+        GameController.self.ui.UpdateTrainInfo(this);
     }
 
     // Update is called once per frame
@@ -74,6 +75,9 @@ public class Train : MonoBehaviour
         cars.Remove(car);
         GameObject obj = Instantiate(Resources.Load<GameObject>("Prefabs/Wreckage"), car.transform.position, Quaternion.identity);
         obj.transform.position = car.transform.position;
+
+        // Update train UI information
+        GameController.self.ui.UpdateTrainInfo(this);
     }
 
     // Remove abandoned train cars

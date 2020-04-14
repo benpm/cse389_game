@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 1087421901271592764}
   - component: {fileID: 1087421901271592765}
   - component: {fileID: 1087421901271592766}
-  - component: {fileID: 490946950227682646}
   - component: {fileID: 1087421901271592761}
   - component: {fileID: 1087421901271592760}
+  - component: {fileID: 4711905809698503697}
   m_Layer: 8
   m_Name: Spawner
   m_TagString: Untagged
@@ -106,7 +106,8 @@ MonoBehaviour:
   - {fileID: -8276262488406422588, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
   - {fileID: 1269540525142108225, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
   - {fileID: -7921052967969465774, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
-  spawnRate: 120
+  spawnPeriod: 120
+  activationRadius: 24
 --- !u!114 &1087421901271592766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,22 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358aed3825cbc0d4e8c87bd9d597c959, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!58 &490946950227682646
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1087421901271592767}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.03125
 --- !u!114 &1087421901271592761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,3 +155,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &4711905809698503697
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1087421901271592767}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.0625, y: 2.0625}
+  m_Direction: 0
