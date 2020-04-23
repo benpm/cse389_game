@@ -18,6 +18,7 @@ public class Turret : MonoBehaviour
     public float targetingRadius = 6.0f;
 
     private BulletSystem bulletSystem;
+    private Attackable attackable;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Turret : MonoBehaviour
         else
             bulletSystem = GameController.self.playerBulletSystem;
         tip = transform.Find("Tip");
+        attackable = transform.parent.GetComponent<Attackable>();
         Debug.Assert(tip, "Tip not found");
         Debug.Assert(bulletSystem);
     }
@@ -79,6 +81,13 @@ public class Turret : MonoBehaviour
                     target = transform.position + Vector3.up;
                 }
                 break;
+        }
+
+        // Disable when dead
+        if (attackable && attackable.state == Attackable.State.Dead)
+        {
+            canFire = false;
+            target = transform.position + Vector3.up;
         }
 
         // Get angle between turret and world plane point

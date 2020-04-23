@@ -14557,7 +14557,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403701992}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -14.01, y: 11.61, z: -0.56}
+  m_LocalPosition: {x: -47.07, y: 11.61, z: -0.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8688110729356966027}
@@ -19599,11 +19599,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1403701993}
     m_Modifications:
-    - target: {fileID: 4542903326130970614, guid: c2f5e2148ce47694f85ad26e967dc1f5,
-        type: 3}
-      propertyPath: bulletSystem
-      value: 
-      objectReference: {fileID: 635942526}
     - target: {fileID: 5488286605910612921, guid: c2f5e2148ce47694f85ad26e967dc1f5,
         type: 3}
       propertyPath: m_Name
@@ -19679,11 +19674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1403701993}
     m_Modifications:
-    - target: {fileID: 1147825601254224089, guid: d88744c742fc36849a822009eca34ba4,
-        type: 3}
-      propertyPath: bulletSystem
-      value: 
-      objectReference: {fileID: 635942526}
     - target: {fileID: 5374854304609705750, guid: d88744c742fc36849a822009eca34ba4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19764,11 +19754,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cargo Car
       objectReference: {fileID: 0}
-    - target: {fileID: 1296512298306619253, guid: b9a99453995026442b29268d7d68301e,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: da87707d3628e9a4b8f8e24edfced694, type: 2}
     - target: {fileID: 4582884056617255354, guid: b9a99453995026442b29268d7d68301e,
         type: 3}
       propertyPath: m_LocalPosition.x

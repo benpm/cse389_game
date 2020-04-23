@@ -58,7 +58,7 @@ public class Train : MonoBehaviour
     }
 
     // A train car was destroyed
-    public void trainCarDestroyed(TrainCar car)
+    public void dead(TrainCar car)
     {
         // Stop trailing cars
         List<TrainCar> trailingCars = cars.FindAll(item => item.position > car.position);

@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+        body.freezeRotation = true;
         attackable = GetComponent<Attackable>();
         attackTimer = attackFreq;
     }
@@ -60,13 +61,17 @@ public class Enemy : MonoBehaviour
 
         // Rigidbody easing
         body.velocity *= 0.6f;
-        body.angularVelocity *= 0.3f;
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 0.01f));
+        body.angularVelocity = 0.0f;
     }
 
     // Recovered from attack
     void recovered()
     {
         state = State.Running;
+    }
+
+    // Dead
+    void dead()
+    {
     }
 }

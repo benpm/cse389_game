@@ -127,8 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   control: 1
-  firingRate: 10
-  bulletSystem: {fileID: 0}
+  firingPeriod: 10
   rotateSpeed: 0.1
   targetingRadius: 14
 --- !u!1 &5488286605910612921
@@ -145,6 +144,8 @@ GameObject:
   - component: {fileID: 4542903325022647844}
   - component: {fileID: 4542903325022647847}
   - component: {fileID: 4542903325022647846}
+  - component: {fileID: 8229977640668421363}
+  - component: {fileID: 1103256973}
   m_Layer: 0
   m_Name: Turret Car
   m_TagString: Untagged
@@ -275,5 +276,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   position: 0
-  hp: 1000
   abandoned: 0
+--- !u!114 &8229977640668421363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488286605910612921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6d69a2b619c6f478069dcf4dad3ece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 10000
+  hp: 100
+  state: 0
+--- !u!114 &1103256973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5488286605910612921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbed3b171e3c1c9458cca4d34841904a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

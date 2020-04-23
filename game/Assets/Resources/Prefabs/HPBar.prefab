@@ -197,7 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e467a9b8bdfdc44389cf71ac2d194bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  car: {fileID: 0}
+  who: {fileID: 0}
+  showOnlyWhenHit: 1
 --- !u!1 &9171266239084836599
 GameObject:
   m_ObjectHideFlags: 0

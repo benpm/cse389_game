@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5119451936823517478}
   - component: {fileID: 5119451936823517479}
   - component: {fileID: 5119451936823517476}
+  - component: {fileID: 7975988705403360329}
+  - component: {fileID: 1142875976}
   m_Layer: 0
   m_Name: Cargo Car
   m_TagString: Untagged
@@ -143,5 +145,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   position: 0
-  hp: 1000
   abandoned: 0
+--- !u!114 &7975988705403360329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703393994023891881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e6d69a2b619c6f478069dcf4dad3ece, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 10000
+  hp: 100
+  state: 0
+--- !u!114 &1142875976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703393994023891881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbed3b171e3c1c9458cca4d34841904a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

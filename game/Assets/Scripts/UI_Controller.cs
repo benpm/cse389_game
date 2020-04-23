@@ -29,7 +29,9 @@ public class UI_Controller : MonoBehaviour
         foreach (TrainCar car in train.cars)
         {
             GameObject newHPBar = Instantiate(hpBarPrefab, bottom.transform);
-            newHPBar.GetComponent<UI_Healthbar>().car = car;
+            UI_Healthbar uiHealthBar = newHPBar.GetComponent<UI_Healthbar>();
+            uiHealthBar.who = car.GetComponent<Attackable>();
+            newHPBar.SetActive(true);
             newHPBar.transform.localPosition = new Vector2(n * 120.0f - leftSide, 0);
             n += 1;
         }
