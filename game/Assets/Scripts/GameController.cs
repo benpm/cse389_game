@@ -8,7 +8,9 @@ public class GameController : MonoBehaviour
     public static GameController self;
 
     private Camera cam;
+    private AudioSource audioSource;
     private int _money = 0;
+    private Dictionary<string, AudioClip> audioClips;
     public BulletSystem playerBulletSystem;
     public BulletSystem enemyBulletSystem;
     public Train train;
@@ -41,18 +43,28 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+        audioSource = GetComponent<AudioSource>();
         playerBulletSystem = transform.Find("PlayerBulletSystem").GetComponent<BulletSystem>();
         enemyBulletSystem = transform.Find("EnemyBulletSystem").GetComponent<BulletSystem>();
         cam = transform.Find("Main Camera").GetComponent<Camera>();
         train = FindObjectOfType<Train>();
         levelProperties = FindObjectOfType<LevelProperties>();
         ui = GetComponentInChildren<UI_Controller>();
+        // Load audio clip resources
+        audioClips = new Dictionary<string, AudioClip>();
+        AudioClip[] clips = Resources.LoadAll<AudioClip>("Sound");
+        foreach (AudioClip clip in clips)
+        {
+            audioClips.Add(clip.name, clip);
+            Debug.LogFormat("loaded audio resource {0}", clip.name);
+        }
         // Make sure we found everything we need
         Debug.Assert(cam, "Cannot find Main Camera");
         Debug.Assert(playerBulletSystem, "Cannot find PlayerBulletSystem");
         Debug.Assert(enemyBulletSystem, "Cannot find EnemyBulletSystem");
         Debug.Assert(levelProperties, "Cannot find LevelProperties");
         Debug.Assert(ui, "Cannot find UI_Controller");
+        Debug.Assert(audioSource);
     }
 
     // Update is called once per frame
@@ -83,5 +95,12 @@ public class GameController : MonoBehaviour
         camPos.x = Mathf.Clamp(camPos.x, levelProperties.viewBox.xMin, levelProperties.viewBox.xMax);
         camPos.y = Mathf.Clamp(camPos.y, levelProperties.viewBox.yMin, levelProperties.viewBox.yMax);
         cam.transform.position = camPos;
+    }
+
+    // Play a sound
+    public void PlaySound(string name)
+    {
+        audioSource.pitch = Random.Range(0.9f, 1.1f);
+        audioSource.PlayOneShot(audioClips[name]);
     }
 }

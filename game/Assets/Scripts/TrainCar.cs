@@ -65,6 +65,6 @@ public class TrainCar : MonoBehaviour
 
     void hit()
     {
-        Debug.LogFormat("{0} hit!", name);
+        GameController.self.PlaySound("metal_hit");
     }
 }

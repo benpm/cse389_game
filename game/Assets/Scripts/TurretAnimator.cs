@@ -39,6 +39,7 @@ public class TurretAnimator : MonoBehaviour
     public void dead()
     {
         state = State.Dying;
+        GameController.self.PlaySound("explode");
     }
 
     public void recovered()

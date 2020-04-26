@@ -107,6 +107,7 @@ public class Turret : MonoBehaviour
             float angle = Mathf.Deg2Rad * (transform.rotation.eulerAngles.z + 90.0f);
             Vector3 dir = new Vector3(Mathf.Rad2Deg * Mathf.Cos(angle), Mathf.Rad2Deg * Mathf.Sin(angle), 0);
             bulletSystem.emit(tip.position, dir);
+            GameController.self.PlaySound("shoot");
             canFire = false;
         }
     }

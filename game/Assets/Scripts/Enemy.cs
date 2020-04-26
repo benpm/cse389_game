@@ -73,5 +73,7 @@ public class Enemy : MonoBehaviour
     // Dead
     void dead()
     {
+        string[] hitSounds = { "ouch_1", "ouch_2", "ouch_3", "ouch_4" };
+        GameController.self.PlaySound(hitSounds[Random.Range(0, hitSounds.Length)]);
     }
 }

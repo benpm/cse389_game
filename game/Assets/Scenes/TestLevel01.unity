@@ -76008,6 +76008,11 @@ PrefabInstance:
       propertyPath: viewBox.x
       value: -25
       objectReference: {fileID: 0}
+    - target: {fileID: 4650824898168174258, guid: 5944b362a3ca99648860a75a8e52245a,
+        type: 3}
+      propertyPath: viewBox.width
+      value: 48
+      objectReference: {fileID: 0}
     - target: {fileID: 4650824898168174259, guid: 5944b362a3ca99648860a75a8e52245a,
         type: 3}
       propertyPath: scenePath

@@ -65,6 +65,7 @@ public class Attackable : MonoBehaviour
             state = State.Recovering;
             recoverTimer = 60;
             hp -= 10;
+            GameController.self.PlaySound("hit");
             SendMessage("hit");
             if (hpBar)
             {
