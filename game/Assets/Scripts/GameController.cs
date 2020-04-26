@@ -8,11 +8,20 @@ public class GameController : MonoBehaviour
     public static GameController self;
 
     private Camera cam;
+    private int _money = 0;
     public BulletSystem playerBulletSystem;
     public BulletSystem enemyBulletSystem;
     public Train train;
     public LevelProperties levelProperties;
     public UI_Controller ui;
+    public int money {
+        get { return _money; }
+        set
+        {
+            _money = value;
+            ui.setMoney(_money);
+        }
+    }
 
     //Enforce singleton behavior
     void Awake()
@@ -49,7 +58,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        cam.orthographicSize = ((1280.0f + 720.0f) / ((float)Screen.width + (float)Screen.height)) * 15.65f;
     }
 
     // Reached end of level

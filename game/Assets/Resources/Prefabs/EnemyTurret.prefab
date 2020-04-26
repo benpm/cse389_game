@@ -246,6 +246,7 @@ MonoBehaviour:
   maxHp: 100
   hp: 100
   state: 0
+  moneyValue: 100
 --- !u!50 &1247849152899466042
 Rigidbody2D:
   serializedVersion: 4

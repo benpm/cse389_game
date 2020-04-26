@@ -12,6 +12,7 @@ public class Attackable : MonoBehaviour
     public int maxHp = 100;
     public int hp = 100;
     public State state = State.Alive;
+    public int moneyValue = 10;
 
     private int recoverTimer;
     private Rigidbody2D body;
@@ -47,6 +48,10 @@ public class Attackable : MonoBehaviour
                 body.velocity = Vector2.zero;
                 Destroy(gameObject, 1.0f);
                 body.simulated = false;
+                if (gameObject.layer == LayerMask.NameToLayer("Hittable"))
+                {
+                    GameController.self.money += moneyValue;
+                }
                 state = State.Dead;
                 break;
         }
