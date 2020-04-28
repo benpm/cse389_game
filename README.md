@@ -6,7 +6,7 @@ _Benjamin Mastripolito, Haydn Jones, Marcelo Dominguez_
 ![](screenshot_1.png)
 
 # Download
-See [Releases](releases) for executable downloads.
+See [Releases](https://github.com/benpm/cse389_game/releases) for executable downloads.
 
 # How to Play
 Use the mouse to fire your weapon at enemies.
