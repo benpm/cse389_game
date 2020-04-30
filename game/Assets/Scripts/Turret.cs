@@ -19,6 +19,7 @@ public class Turret : MonoBehaviour
 
     private BulletSystem bulletSystem;
     private Attackable attackable;
+    private int animateTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -108,7 +109,17 @@ public class Turret : MonoBehaviour
             Vector3 dir = new Vector3(Mathf.Rad2Deg * Mathf.Cos(angle), Mathf.Rad2Deg * Mathf.Sin(angle), 0);
             bulletSystem.emit(tip.position, dir);
             GameController.self.PlaySound("shoot");
+            animateTimer = 15;
             canFire = false;
+        }
+
+        // Animate
+        if (animateTimer > 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.y = 1.0f + (animateTimer / 15.0f) * 0.2f;
+            transform.localScale = scale;
+            animateTimer -= 1;
         }
     }
 }

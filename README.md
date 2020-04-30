@@ -72,3 +72,10 @@ The gameplay involves creating, upgrading, repairing, and primarily, protecting 
 
 # Assets Used
 - [Desert Tileset](https://opengameart.org/content/desert-tileset-0) CC BY 3.0
+- https://freesound.org/people/HonorHunter/sounds/271666/
+- https://freesound.org/people/lewisisminted/sounds/162370/
+- https://freesound.org/people/PauliusI/sounds/346299/
+- https://freesound.org/people/BenjaminNelan/sounds/410364/
+- https://freesound.org/people/Robinhood76/sounds/125414/
+- https://freesound.org/people/oldedgar/sounds/97977/
+- https://freesound.org/people/kbnevel/sounds/119859/

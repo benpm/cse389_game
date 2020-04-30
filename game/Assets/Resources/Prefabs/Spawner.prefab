@@ -103,11 +103,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprites:
   - {fileID: -2630129836624287915, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
-  - {fileID: -6251682230944352461, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
+  - {fileID: 5777552420452043588, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
   - {fileID: -1370661682523340017, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
   - {fileID: -8276262488406422588, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
   - {fileID: 1269540525142108225, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
-  - {fileID: -7921052967969465774, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
+  - {fileID: 2788568348960109317, guid: cd25a95ac1babe448a76b29714402b31, type: 3}
   spawnPeriod: 120
   activationRadius: 24
 --- !u!114 &1087421901271592766
