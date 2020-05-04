@@ -12,6 +12,12 @@ public class TurretAnimator : MonoBehaviour
 
     int hitTimer = 0;
     const int hitTime = 30;
+    Vector3 initScale;
+
+    private void Start()
+    {
+        initScale = transform.localScale;
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,8 +27,8 @@ public class TurretAnimator : MonoBehaviour
         {
             float val = (hitTimer / (float)hitTime);
             Vector3 scale = transform.localScale;
-            scale.y = 1.0f + Random.Range(-0.1f, 0.1f) * val;
-            scale.x = 1.0f + Random.Range(-0.1f, 0.1f) * val;
+            scale.y = initScale.y + Random.Range(-0.1f, 0.1f) * val;
+            scale.x = initScale.x + Random.Range(-0.1f, 0.1f) * val;
             transform.localScale = scale;
 
             hitTimer -= 1;
@@ -36,7 +42,7 @@ public class TurretAnimator : MonoBehaviour
         }
     }
 
-    public void dead()
+    public void dead(GameObject who)
     {
         state = State.Dying;
         GameController.self.PlaySound("explode");

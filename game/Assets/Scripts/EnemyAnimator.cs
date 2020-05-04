@@ -12,11 +12,12 @@ public class EnemyAnimator : MonoBehaviour
 
     int hitTimer = 0;
     const int hitTime = 30;
+    Vector3 initScale;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        initScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class EnemyAnimator : MonoBehaviour
         {
             float val = Mathf.Sin((hitTimer / (float)hitTime) * Mathf.PI) * (hitTimer / (float)hitTime);
             Vector3 scale = transform.localScale;
-            scale.y = 1.0f + val;
+            scale.y = initScale.y + val;
             Vector3 rotation = transform.rotation.eulerAngles;
             rotation.z = val * 20.0f;
             transform.localScale = scale;
@@ -54,7 +55,7 @@ public class EnemyAnimator : MonoBehaviour
         }
     }
 
-    public void dead()
+    public void dead(GameObject who)
     {
         state = State.Dying;
     }

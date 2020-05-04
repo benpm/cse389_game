@@ -44,7 +44,7 @@ public class Attackable : MonoBehaviour
                 }
                 break;
             case State.Dying:
-                SendMessage("dead", SendMessageOptions.DontRequireReceiver);
+                SendMessageUpwards("dead", gameObject, SendMessageOptions.DontRequireReceiver);
                 body.velocity = Vector2.zero;
                 Destroy(gameObject, 1.0f);
                 body.simulated = false;
@@ -55,6 +55,11 @@ public class Attackable : MonoBehaviour
                 state = State.Dead;
                 break;
         }
+    }
+
+    public void heal()
+    {
+        hp = maxHp;
     }
 
     // Collision with bullet

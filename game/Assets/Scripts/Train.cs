@@ -10,7 +10,7 @@ public class Train : MonoBehaviour
     public TrainCar engineCar { get { return cars[0]; } }
 
     // Re-create train car list
-    void createCarList()
+    public void createCarList()
     {
         cars = new List<TrainCar>(transform.GetComponentsInChildren<TrainCar>());
         float position = 0.0f;
@@ -58,8 +58,9 @@ public class Train : MonoBehaviour
     }
 
     // A train car was destroyed
-    public void dead(TrainCar car)
+    public void dead(GameObject who)
     {
+        TrainCar car = who.GetComponent<TrainCar>();
         // Stop trailing cars
         List<TrainCar> trailingCars = cars.FindAll(item => item.position > car.position);
         foreach (TrainCar trailingCar in trailingCars)
@@ -78,6 +79,12 @@ public class Train : MonoBehaviour
 
         // Update train UI information
         GameController.self.ui.UpdateTrainInfo(this);
+
+        // No cars left
+        if (cars.Count == 0)
+        {
+            Application.LoadLevel(4);
+        }
     }
 
     // Remove abandoned train cars

@@ -25,6 +25,26 @@ public class GameController : MonoBehaviour
         }
     }
 
+    // Add delegates for scene loading
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    // Called when scene is loaded
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        levelProperties = FindObjectOfType<LevelProperties>();
+        if (levelProperties.levelType == LevelProperties.LevelType.Shop)
+        {
+            train.gameObject.SetActive(false);
+        }
+    }
+
     //Enforce singleton behavior
     void Awake()
     {
@@ -47,7 +67,7 @@ public class GameController : MonoBehaviour
         playerBulletSystem = transform.Find("PlayerBulletSystem").GetComponent<BulletSystem>();
         enemyBulletSystem = transform.Find("EnemyBulletSystem").GetComponent<BulletSystem>();
         cam = transform.Find("Main Camera").GetComponent<Camera>();
-        train = FindObjectOfType<Train>();
+        //train = FindObjectOfType<Train>();
         levelProperties = FindObjectOfType<LevelProperties>();
         ui = GetComponentInChildren<UI_Controller>();
         // Load audio clip resources
@@ -62,7 +82,6 @@ public class GameController : MonoBehaviour
         Debug.Assert(cam, "Cannot find Main Camera");
         Debug.Assert(playerBulletSystem, "Cannot find PlayerBulletSystem");
         Debug.Assert(enemyBulletSystem, "Cannot find EnemyBulletSystem");
-        Debug.Assert(levelProperties, "Cannot find LevelProperties");
         Debug.Assert(ui, "Cannot find UI_Controller");
         Debug.Assert(audioSource);
     }
@@ -79,7 +98,13 @@ public class GameController : MonoBehaviour
         Debug.Log("Ended level, going to next level");
         // Clean up abandoned train cars
         train.deleteAbandoned();
+        // Stop train if we are in the shop
+        train.gameObject.SetActive(true);
+        train.createCarList();
         // Load new level
+        Debug.Log(levelProperties);
+        Debug.Log(levelProperties.nextLevel);
+        Debug.Log(levelProperties.nextLevel.scenePath);
         SceneManager.LoadScene(levelProperties.nextLevel.scenePath);
     }
 
@@ -102,5 +127,37 @@ public class GameController : MonoBehaviour
     {
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(audioClips[name]);
+    }
+
+    // Add another train car
+    public void AddCar()
+    {
+        GameObject trainCar = Resources.Load<GameObject>("Prefabs/Turret Car");
+        TrainCar car = trainCar.GetComponent<TrainCar>();
+        Instantiate(trainCar, train.transform);
+    }
+
+    // Repair everything
+    public void RepairTrain()
+    {
+        foreach (TrainCar car in train.cars)
+        {
+            car.GetComponent<Attackable>().heal();
+        }
+    }
+
+    // Shootier turrets
+    public void ShootierTurrets()
+    {
+        foreach (TrainCar car in train.cars)
+        {
+            car.transform.Find("Auto Turret").GetComponent<Turret>().firingPeriod -= 2;
+        }
+    }
+
+    // Overclock train engine
+    public void OverclockTrainEngine()
+    {
+        train.speed += 1;
     }
 }

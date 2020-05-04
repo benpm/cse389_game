@@ -37,8 +37,14 @@ public class TrainCar : MonoBehaviour
     // Initialize for start and scene loaded
     private void Init()
     {
-        path = GameObject.Find("TrainPath").GetComponent<Path>();
-        Debug.Assert(path, "Train Path object not found");
+        if (!GameObject.Find("TrainPath"))
+        {
+            //gameObject.SetActive(false);
+        }
+        else
+        {
+            path = GameObject.Find("TrainPath").GetComponent<Path>();
+        }
     }
 
     // Update is called once per frame
